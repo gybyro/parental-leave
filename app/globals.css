@@ -1,26 +1,137 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #fff;
+  --info: #3498db;
+  --success: #07bc0c;
+  --warning: #f1c40f;
+  --error: hsl(6, 78%, 57%);
+  --dark: #121212;
+  --dark400: #00003c;
+  --dark300: #9999B1;
+  --dark200: #CCCCD8;
+  --dark100: #F2F2F5;
+
+  --gradient: linear-gradient(135deg, #0161FD 0%, #3F46D2 25%, #812EA4 51%, #C21578 77%, #FD0050 100%);
+  --progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+  --progress-dark: #bb86fc;
+
+  --blue600: #0044B3;
+  --blue400: #0061FF;
+  --blue300: #99C0FF;
+  --blue200: #CCDFFF;
+  --blue100: #F2F7FF;
+
+  --red600: #B30038;
+  --red400: #FF0050;
+  --red300: #FF99B9;
+  --red200: #FFCCDC;
+  --red100: #FFF2F6;
+
+  --blueberry600: #24268E;
+  --blueberry400: #4649D0;
+  --blueberry300: #B5B6EC;
+  --blueberry200: #DADBF6;
+  --blueberry100: #F6F6FD;
+
+  --purple600: #421C63;
+  --purple400: #6A2EA0;
+  --purple300: #C3ABD9;
+  --purple200: #E1D5EC;
+  --purple100: #F8F5FA;
+
+  --rose600: #4D003A;
+  --rose400: #9A0074;
+  --rose300: #D799C7;
+  --rose200: #EBCCE3;
+  --rose100: #FAF2F8;
+
+  --mint800: #005B52;
+  --mint600: #00B39E;
+  --mint400: #00E4CA;
+  --mint300: #99F4EA;
+  --mint200: #CCFAF4;
+  --mint100: #F2FEFC;
+
+  --yellow600: #E6CF00;
+  --yellow400: #FFF066;
+  --yellow300: #FFF9C2;
+  --yellow200: #FFFCE0;
+  --yellow100: #FFFEF7;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+h1, h2, h3, h4, h5, 
+.default, 
+.large,
+.medium, 
+.small,
+.eyebrow {
+  color: var(--dark400);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+}
+h1 {
+  font-size: 42px;
+  line-height: 52px;
+}
+h2 {
+  font-size: 34px;
+  line-height: 44px;
+}
+h3 {
+  font-size: 24px;
+  line-height: 34px;
+}
+h4 {
+  font-size: 20px;
+  line-height: 30px;
+}
+h5 {
+  font-size: 18px;
+  line-height: 28px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.default {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 300;
+}
+.large {
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 300;
+}
+.medium {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.small {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.eyebrow {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+
+
+a {
+  color: var(--blue400);
+  text-decoration: underline;
+  transition: color .2s, box-shadow .2s;
+  cursor: pointer;
+}
+a:hover {
+  color: var(--blueberry400);
 }
