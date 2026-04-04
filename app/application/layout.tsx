@@ -1,52 +1,45 @@
-'use client';
+'use client'
 
-import { useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useEffect } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
+import { useForm, FormProvider } from 'react-hook-form'
+import { mainFormSchema, FormData, STEPS } from "@/lib/schema"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { StepIndicator } from '@/app/components/ui/StepIndicator'
 
-interface ParentalLeaveForm {
-  applicant: {
-    fullName: string;
-    email: string;
-  };
-  period: {
-    startDate: Date | null;
-    endDate: Date | null;
-  };
-  // Add other steps here...
-}
 
 export default function ApplicationLayout({ children }: { children: React.ReactNode }) {
-  const methods = useForm<ParentalLeaveForm>({
+  const methods = useForm<FormData>({
+    resolver: zodResolver(mainFormSchema),
     mode: 'onBlur',
     defaultValues: {
-      applicant: { fullName: '', email: '' },
-      period: { startDate: null, endDate: null },
-    },
+      applicant: { fullName: '', kennitala: '', address: '', email: '', phoneNumber: '' },
+      employment: { type: 'Employed', employerName: '', employmentRatio: 100 },
+      partner: { hasPartner: false },
+      leave: { startDate: undefined, endDate: undefined, leaveRatio: '100%' },
+      payment: { bankNumber: '', ledger: '', accountNumber: '' },
+    }
   });
 
-  const { watch } = methods;
   const router = useRouter();
   const pathname = usePathname();
-
-  // Watch a core field to detect if state was lost
-  const fullName = watch('applicant.fullName');
+  const applicantName = methods.watch('applicant.fullName');
+  const currentStepIndex = STEPS.findIndex(s => s.path === pathname);
 
   useEffect(() => {
-    const isFirstStep = pathname === '/application/applicant';
-    // If we aren't on the first step and the data is empty, redirect back
-    if (!isFirstStep && !fullName) {
-      router.replace('/application/applicant');
+    const isFirstStep = pathname === STEPS[0].path;
+    if (!isFirstStep && !applicantName) {
+      router.replace(STEPS[0].path);
     }
-  }, [fullName, pathname, router]);
+  }, [applicantName, pathname, router]);
 
-  
   return (
     <FormProvider {...methods}>
-      <div className="min-h-screen bg-gray-50 flex justify-center py-12 px-4">
-        <main className="w-full max-w-3xl bg-white shadow-sm border border-gray-100 p-8 md:p-12 rounded-lg">
+      <div className="flex-1 flex flex-col items-center justify-start p-4 md:p-12">
+        <StepIndicator steps={STEPS} currentStepIndex={currentStepIndex} />
+        <div className="w-full max-w-4xl bg-[var(--primary)] rounded-xl shadow-lg p-8 md:p-16">
           {children}
-        </main>
+        </div>
       </div>
     </FormProvider>
   );
