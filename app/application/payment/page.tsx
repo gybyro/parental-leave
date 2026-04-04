@@ -17,17 +17,14 @@ const PaymentStep = () => {
 
             <div className="flex items-end gap-2">
                 <div className="w-24">
-                    <Input label="Bank" maxLength={4} {...register('payment.bankNumber')} error={errors.payment?.bankNumber?.message as string} />
                     <Input label="Bank" maxLength={4} {...register('payment.bankNumber')} error={errors.payment?.bankNumber?.message} />
                 </div>
                 <span className="mb-4 text-xl font-bold">-</span>
                 <div className="w-16">
-                    <Input label="Ledger" maxLength={2} {...register('payment.ledger')} error={errors.payment?.ledger?.message as string} />
                     <Input label="Ledger" maxLength={2} {...register('payment.ledger')} error={errors.payment?.ledger?.message} />
                 </div>
                 <span className="mb-4 text-xl font-bold">-</span>
                 <div className="flex-1">
-                    <Input label="Account Number" maxLength={6} {...register('payment.accountNumber')} error={errors.payment?.accountNumber?.message as string} />
                     <Input label="Account Number" maxLength={6} {...register('payment.accountNumber')} error={errors.payment?.accountNumber?.message} />
                 </div>
             </div>

@@ -16,13 +16,13 @@ const ApplicantStep = () => {
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input label="Full Name" {...register('applicant.fullName')} error={errors.applicant?.fullName?.message as string} />
-                <Input label="Kennitala" {...register('applicant.kennitala')} error={errors.applicant?.kennitala?.message as string} />
+                <Input label="Full Name" {...register('applicant.fullName')} error={errors.applicant?.fullName?.message} />
+                <Input label="Kennitala" {...register('applicant.kennitala')} error={errors.applicant?.kennitala?.message} />
                 <div className="md:col-span-2">
-                    <Input label="Address" {...register('applicant.address')} error={errors.applicant?.address?.message as string} />
+                    <Input label="Address" {...register('applicant.address')} error={errors.applicant?.address?.message} />
                 </div>
-                <Input label="Email" type="email" {...register('applicant.email')} error={errors.applicant?.email?.message as string} />
-                <Input label="Phone Number" {...register('applicant.phoneNumber')} error={errors.applicant?.phoneNumber?.message as string} />
+                <Input label="Email" type="email" {...register('applicant.email')} error={errors.applicant?.email?.message} />
+                <Input label="Phone Number" {...register('applicant.phoneNumber')} error={errors.applicant?.phoneNumber?.message} />
             </div>
 
             <StepNavigation currentStepId="applicant" schemaKey="applicant" />
