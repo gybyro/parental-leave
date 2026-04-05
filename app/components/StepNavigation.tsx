@@ -36,7 +36,7 @@ export function StepNavigation({ currentStepId, schemaKey }: StepNavigationProps
     return (
         <div className="flex justify-between items-center mt-12 pt-8 border-t border-[var(--dark200)]">
         {!isFirst ? (
-            <Button variant="negative" onClick={handleBack} type="button">Back</Button>
+            <Button variant="ghost" onClick={handleBack} type="button">Back</Button>
         ) : <div />}
         <Button variant="primary" onClick={handleNext} type="button">Next</Button>
         </div>

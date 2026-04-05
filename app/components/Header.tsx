@@ -1,9 +1,10 @@
 'use client'
 import React from 'react';
-
-import Image from "next/image";
 import Link from 'next/link';
+import Image from "next/image";
 import logo from "@/public/islandis.svg"
+
+import { Button } from "@/app/components/ui/Button"
 
 import "./fohestyle.css"
 
@@ -24,27 +25,36 @@ const Header = () => {
     // const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
     return (
-        <div className='header'>
+        <div className='contentContainer'>
+            
+        <div className='h-28 px-3 py-8 block flex flex-row items-center'>
             <Link href="/" className='homebtn' >
                 <Image
-                    className="headerLogo"
+                    className="min-w-7 "
                     src={logo}
-                    alt="Bubblify logo"
+                    alt="island.is logo"
                     priority
                 />
             </Link>
-            <div>
-                <Link href="/bubbles" className="btn">Products</Link>
-                <Link href="/bundles" className="btn">Bundles</Link>
-                <Link href="/about" className="btn">About us</Link>
-                {/* <Link href="/cart" className="btn">
-                    Cart {"     "}
-                    <FontAwesomeIcon icon={faCartShopping} /> 
-                    {cartCount > 0 && (
-                        <span className="cart-badge">{cartCount}</span>
-                    )}
-                </Link> */}
+            <div className='w-full pl-4 flex justify-end'>
+
+                <Link href="/bubbles">
+                    <Button 
+                    variant='ghost'
+                    size='small'
+                    >Start Filing</Button>
+                </Link>
+
+                <Button variant='utility' size='small'>
+                    Start Filing
+                </Button>
+
+                <Button variant='destructive' size='small'>
+                    Start Filing
+                </Button>
+
             </div>
+        </div>
         </div>
     );
 }
